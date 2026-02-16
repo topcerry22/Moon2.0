@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Paper Minecraft",
+    "page": "game1.html",
+    "thumb": "download.png"
+  },
+  {
+    "title": "N-gon",
+    "page": "game2.html",
+    "thumb": "thumb2.jpg"
+  },
+  {
+    "title": "Game 3",
+    "page": "game3.html",
+    "thumb": "thumb3.jpg"
+  }
+]
