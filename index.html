@@ -689,7 +689,7 @@
 
 <script>
   /* ── Loading screen ── */
-  const statusMsgs = ['INITIALIZING...', 'LOADING ASSETS...', 'SYNCING DATA...', 'READY'];
+   statusMsgs = ['INITIALIZING...', 'LOADING ASSETS...', 'SYNCING DATA...', 'READY'];
   let si = 0;
   const statusEl = document.getElementById('loaderStatus');
   const statusTimer = setInterval(() => {
@@ -740,7 +740,7 @@
     document.getElementById('iframePlaceholder').classList.remove('hidden');
   }
   // 🔧 Replace this with your Render URL after deploying the proxy
-  const PROXY_URL = 'https://moonprox.onrender.com/';
+  const PROXY_URL = 'https://moonprox.onrender.com';
 
   function doSearch(q) {
     if (!q.trim()) return;
@@ -820,4 +820,5 @@
 </body>
 </html>
 ```
+
 
