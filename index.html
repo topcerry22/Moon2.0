@@ -391,7 +391,7 @@
   <div class="search-panel-header">
     <span class="search-panel-title">// WEB SEARCH</span>
     <div class="search-bar-inner">
-      <input type="text" id="drawerSearchInput" placeholder="SEARCH DUCKDUCKGO..." autocomplete="off" spellcheck="false">
+      <input type="text" id="drawerSearchInput" placeholder="SEARCH BING..." autocomplete="off" spellcheck="false">
       <button class="drawer-search-go" id="drawerSearchGo">⌕</button>
     </div>
     <button class="panel-close" id="closeSearchPanel">✕</button>
@@ -401,12 +401,12 @@
       <div class="placeholder-icon">🔍</div>
       <div>TYPE A QUERY AND PRESS ENTER</div>
     </div>
-    <iframe id="ddgFrame" src="about:blank" sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe>
+    <iframe id="ddgFrame" src="about:blank" sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-modals"></iframe>
   </div>
 </div>
 
 <script>
-  const PROXY_URL = 'https://moonprox.onrender.com';
+
 
   /* Loading screen */
   const statusMsgs = ['INITIALIZING...', 'LOADING ASSETS...', 'SYNCING DATA...', 'READY'];
@@ -459,7 +459,7 @@
   function doSearch(q) {
     if (!q.trim()) return;
     document.getElementById('iframePlaceholder').classList.add('hidden');
-    document.getElementById('ddgFrame').src = PROXY_URL + '/search?q=' + encodeURIComponent(q);
+    document.getElementById('ddgFrame').src = 'https://www.bing.com/search?q=' + encodeURIComponent(q) + '&ensearch=1';
   }
 
   document.getElementById('openSearchPanelBtn').addEventListener('click', () => openSearchPanel(''));
