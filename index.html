@@ -228,6 +228,7 @@
   .menu-btn:nth-child(1) { animation-delay: 0.3s; }
   .menu-btn:nth-child(2) { animation-delay: 0.4s; }
   .menu-btn:nth-child(3) { animation-delay: 0.5s; }
+  .menu-btn:nth-child(4) { animation-delay: 0.6s; }
 
   .menu-btn::before {
     content: '';
@@ -254,6 +255,157 @@
     color: var(--accent);
   }
   .menu-btn:hover .btn-arrow { opacity: 1; right: 0.75rem; }
+
+  /* ─── MENU SEARCH BAR ──────────────────────────────── */
+  .menu-search-wrap {
+    margin-top: 1.5rem;
+    width: 260px;
+    position: relative;
+    animation: slideUp 0.8s cubic-bezier(.2,1,.3,1) both;
+    animation-delay: 0.65s;
+  }
+  .menu-search-inner {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--card);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .menu-search-inner:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79,138,255,0.12);
+  }
+  #menuSearchInput {
+    flex: 1;
+    padding: 0.75rem 0.9rem;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    outline: none;
+  }
+  #menuSearchInput::placeholder { color: var(--muted); }
+  .menu-search-btn {
+    padding: 0 1rem;
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--border);
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .menu-search-btn:hover { background: rgba(79,138,255,0.1); color: #fff; }
+
+  /* ─── SEARCH RESULTS PANEL ─────────────────────────── */
+  #searchPanel {
+    position: fixed; inset: 0; z-index: 30;
+    pointer-events: none;
+  }
+  #searchPanel .panel-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(6,8,15,0.7);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+  }
+  .search-drawer {
+    position: absolute; top: 0; left: 50%; bottom: 0;
+    width: min(800px, 100vw);
+    transform: translateX(-50%) translateY(40px);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(.2,1,.3,1), opacity 0.4s ease;
+    display: flex; flex-direction: column;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+  }
+  #searchPanel.open { pointer-events: all; }
+  #searchPanel.open .panel-backdrop { opacity: 1; }
+  #searchPanel.open .search-drawer {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  .search-drawer-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.75rem;
+    flex-shrink: 0;
+  }
+  .search-drawer-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    flex: 1;
+  }
+  .search-drawer-inner {
+    display: flex; flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--card);
+    max-width: 400px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-drawer-inner:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79,138,255,0.12);
+  }
+  #drawerSearchInput {
+    flex: 1;
+    padding: 0.6rem 0.9rem;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    outline: none;
+  }
+  #drawerSearchInput::placeholder { color: var(--muted); }
+  .drawer-search-go {
+    padding: 0 0.9rem;
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--border);
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .drawer-search-go:hover { background: rgba(79,138,255,0.1); }
+
+  .search-iframe-wrap {
+    flex: 1;
+    position: relative;
+    background: #fff;
+  }
+  .search-iframe-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    transition: opacity 0.3s;
+  }
+  .search-iframe-placeholder.hidden { opacity: 0; pointer-events: none; }
+  .placeholder-icon { font-size: 2.5rem; opacity: 0.3; }
+
+  #bingFrame {
+    width: 100%; height: 100%;
+    border: none;
+    display: block;
+  }
 
   /* ─── GAMES PANEL (slide in from right) ─────────────── */
   #gamesPanel {
@@ -471,21 +623,27 @@
 <div id="mainMenu">
   <div class="menu-moon"></div>
   <div class="menu-title">MOON</div>
-  <div class="menu-subtitle">GAME ARCADE</div>
   <nav class="menu-nav">
     <button class="menu-btn" id="openGamesBtn">
       <span class="btn-num">01</span>GAMES
       <span class="btn-arrow">→</span>
     </button>
     <button class="menu-btn">
-      <span class="btn-num">02</span>LEADERBOARD
+      <span class="btn-num">02</span>SETTINGS
       <span class="btn-arrow">→</span>
     </button>
-    <button class="menu-btn">
-      <span class="btn-num">03</span>SETTINGS
+    <button class="menu-btn" id="openSearchPanelBtn">
+      <span class="btn-num">03</span>WEB SEARCH
       <span class="btn-arrow">→</span>
     </button>
   </nav>
+
+  <div class="menu-search-wrap">
+    <div class="menu-search-inner">
+      <input type="text" id="menuSearchInput" placeholder="SEARCH THE WEB..." autocomplete="off" spellcheck="false">
+      <button class="menu-search-btn" id="menuSearchBtn" title="Search">⌕</button>
+    </div>
+  </div>
 </div>
 
 <!-- ── GAMES PANEL ── -->
@@ -504,6 +662,28 @@
     </div>
     <div class="game-count" id="gameCount">LOADING...</div>
     <div class="panel-grid" id="gameGrid"></div>
+  </div>
+</div>
+
+<!-- ── DUCKDUCKGO SEARCH PANEL ── -->
+<div id="searchPanel">
+  <div class="panel-backdrop" id="searchPanelBackdrop"></div>
+  <div class="search-drawer">
+    <div class="search-drawer-header">
+      <span class="search-drawer-title">// WEB SEARCH</span>
+      <div class="search-drawer-inner">
+        <input type="text" id="drawerSearchInput" placeholder="SEARCH DUCKDUCKGO..." autocomplete="off" spellcheck="false">
+        <button class="drawer-search-go" id="drawerSearchGo">⌕</button>
+      </div>
+      <button class="panel-close" id="closeSearchPanel">✕</button>
+    </div>
+    <div class="search-iframe-wrap">
+      <div class="search-iframe-placeholder" id="iframePlaceholder">
+        <div class="placeholder-icon">🔍</div>
+        <div>TYPE A QUERY AND PRESS ENTER</div>
+      </div>
+      <iframe id="ddgFrame" src="about:blank" sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe>
+    </div>
   </div>
 </div>
 
@@ -546,9 +726,57 @@
   document.getElementById('closePanel').addEventListener('click', closePanel);
   document.getElementById('panelBackdrop').addEventListener('click', closePanel);
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closePanel();
+  /* ── Search panel ── */
+  function openSearchPanel(query) {
+    document.getElementById('searchPanel').classList.add('open');
+    const input = document.getElementById('drawerSearchInput');
+    input.value = query || '';
+    if (query) doSearch(query);
+    setTimeout(() => input.focus(), 450);
+  }
+  function closeSearchPanel() {
+    document.getElementById('searchPanel').classList.remove('open');
+    document.getElementById('ddgFrame').src = 'about:blank';
+    document.getElementById('iframePlaceholder').classList.remove('hidden');
+  }
+  // 🔧 Replace this with your Render URL after deploying the proxy
+  const PROXY_URL = 'https://moon-search-proxy.onrender.com';
+
+  function doSearch(q) {
+    if (!q.trim()) return;
+    document.getElementById('iframePlaceholder').classList.add('hidden');
+    document.getElementById('ddgFrame').src = `${PROXY_URL}/search?q=${encodeURIComponent(q)}`;
+  }
+
+  document.getElementById('openSearchPanelBtn').addEventListener('click', () => openSearchPanel(''));
+  document.getElementById('searchPanelBackdrop').addEventListener('click', closeSearchPanel);
+  document.getElementById('closeSearchPanel').addEventListener('click', closeSearchPanel);
+
+  // Menu bar search
+  document.getElementById('menuSearchBtn').addEventListener('click', () => {
+    const q = document.getElementById('menuSearchInput').value;
+    openSearchPanel(q);
   });
+  document.getElementById('menuSearchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const q = e.target.value;
+      openSearchPanel(q);
+    }
+  });
+
+  // Drawer search
+  document.getElementById('drawerSearchGo').addEventListener('click', () => {
+    doSearch(document.getElementById('drawerSearchInput').value);
+  });
+  document.getElementById('drawerSearchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch(e.target.value);
+    if (e.key === 'Escape') closeSearchPanel();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closePanel(); closeSearchPanel(); }
+  });
+
 
   /* ── Render games ── */
   function renderGames(games) {
