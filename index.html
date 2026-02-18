@@ -391,7 +391,7 @@
   <div class="search-panel-header">
     <span class="search-panel-title">// WEB SEARCH</span>
     <div class="search-bar-inner">
-      <input type="text" id="drawerSearchInput" placeholder="SEARCH BING..." autocomplete="off" spellcheck="false">
+      <input type="text" id="drawerSearchInput" placeholder="SEARCH DUCKDUCKGO..." autocomplete="off" spellcheck="false">
       <button class="drawer-search-go" id="drawerSearchGo">⌕</button>
     </div>
     <button class="panel-close" id="closeSearchPanel">✕</button>
@@ -459,7 +459,7 @@
   function doSearch(q) {
     if (!q.trim()) return;
     document.getElementById('iframePlaceholder').classList.add('hidden');
-    document.getElementById('ddgFrame').src = 'https://search.brave.com/search?q=' + encodeURIComponent(q);
+    document.getElementById('ddgFrame').src = 'https://moonprox.onrender.com/search?q=' + encodeURIComponent(q);
   }
 
   document.getElementById('openSearchPanelBtn').addEventListener('click', () => openSearchPanel(''));
