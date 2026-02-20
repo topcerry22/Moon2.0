@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Science Study</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #222; color: white; }
+        #container { width: 800px; height: 600px; margin: 20px auto; border: 2px solid #555; }
+    </style>
+</head>
+<body>
+
+    <h1>Sprinter</h1>
+
+    <div id="container"></div>
+
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+    <script>
+        // 2. Initialize Ruffle
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("container");
+            
+            container.appendChild(player);
+
+            // 3. Load your specific SWF file
+            player.load("sprinter.swf");
+            
+            // Optional: Adjust player settings
+            player.style.width = "100%";
+            player.style.height = "100%";
+        });
+    </script>
+
+</body>
+</html>
