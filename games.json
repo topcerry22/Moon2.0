@@ -18,6 +18,16 @@
     "title": "Roblox",
     "page": "game4.html",
     "thumb": "thumb3.jpg"
+  },
+  {
+    "title": "Among Us",
+    "page": "game5.html",
+    "thumb": "amongus.png"
+  },
+  {
+    "title": "Fortnite",
+    "page": "game6.html",
+    "thumb": "fortnite.png"
   }
 ]
 
