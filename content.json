@@ -1,30 +1,26 @@
 [
   {
-    "title": "Paper Minecraft",
-    "page": "MathStudy.html",
-    "thumb": "download.png"
-  },
-  {
     "title": "N-gon",
-    "page": "game2.html",
+    "page": "socialstudy.html",
     "thumb": "thumb2.png"
   },
   {
     "title": "Sprinter",
-    "page": "game3.html",
+    "page": "science.html",
     "thumb": "thumb3.png"
   },
   {
     "title": "StormDrop.io",
-    "page": "game6.html",
+    "page": "spanish.html",
     "thumb": "thumb6.jpg"
   },
   {
     "title": "Jacksmith",
-    "page": "game7.html",
+    "page": "fractions.html",
     "thumb": "thumb7.jpg"
   }
 ]
+
 
 
 
