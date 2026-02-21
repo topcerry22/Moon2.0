@@ -1,87 +1,304 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌙 Moon Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #07080f;
+      --surface: #0e1020;
+      --surface2: #151828;
+      --border: rgba(120, 140, 255, 0.12);
+      --accent: #6c8fff;
+      --accent2: #a78bfa;
+      --text: #dce4ff;
+      --muted: #7a85a8;
+      --glow: rgba(108, 143, 255, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      background: #0d1120;
-      color: #e8eeff;
-      font-family: Arial, sans-serif;
-      padding: 2rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Star field background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(200,210,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 10%, rgba(200,210,255,0.5) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 60%, rgba(200,210,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 80%, rgba(200,210,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 70%, rgba(200,210,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 90%, rgba(200,210,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 20%, rgba(200,210,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 85%, rgba(200,210,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 45%, rgba(200,210,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 40%, rgba(200,210,255,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient glow */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(108, 143, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .moon-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 0.75rem;
+      filter: drop-shadow(0 0 20px rgba(200, 210, 255, 0.5));
+      animation: moonFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes moonFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #c4d0ff 0%, #a78bfa 50%, #6c8fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 6px;
+      box-shadow: 0 0 0 1px rgba(108,143,255,0.04), 0 8px 32px rgba(0,0,0,0.4);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .search-bar:focus-within {
+      border-color: rgba(108, 143, 255, 0.35);
+      box-shadow: 0 0 0 4px rgba(108, 143, 255, 0.08), 0 8px 32px rgba(0,0,0,0.4);
     }
 
     input {
-      padding: 10px;
-      width: 300px;
-      font-size: 16px;
-      border-radius: 4px;
+      flex: 1;
+      background: transparent;
       border: none;
-      margin-right: 10px;
+      outline: none;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      padding: 0.7rem 1rem;
+      caret-color: var(--accent);
+    }
+
+    input::placeholder {
+      color: var(--muted);
     }
 
     button {
-      padding: 10px 15px;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      background-color: #4f8aff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
       color: white;
-      font-weight: bold;
+      border: none;
+      border-radius: 9px;
+      padding: 0.65rem 1.4rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(108, 143, 255, 0.25);
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(108, 143, 255, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    #results {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      animation: fadeUp 0.4s ease both;
     }
 
     .result {
-      margin-top: 20px;
-      padding: 15px;
-      background: #111627;
-      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.4rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      animation: slideIn 0.35s ease both;
     }
 
-    a {
-      color: #4f8aff;
+    .result:hover {
+      border-color: rgba(108, 143, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.35), 0 0 0 1px rgba(108,143,255,0.1);
+    }
+
+    .result a {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
       text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
+      display: block;
+      margin-bottom: 0.35rem;
+      transition: color 0.2s;
     }
 
-    p {
-      margin: 5px 0 0 0;
-      font-size: 14px;
+    .result a:hover {
+      color: var(--accent);
+    }
+
+    .result-url {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      opacity: 0.75;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    .result p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .status-msg {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .status-msg.error {
+      color: #f87171;
+    }
+
+    .count {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0 0.2rem 0.5rem;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+<div class="container">
+  <header>
+    <span class="moon-icon">🌙</span>
+    <h1>Moon Search</h1>
+    <p class="subtitle">French Study Collection</p>
+  </header>
 
-<h1>🌙 Moon Search</h1>
+  <div class="search-bar">
+    <input id="searchInput" placeholder="Search titles, keywords..." autocomplete="off">
+    <button onclick="search()">Search</button>
+  </div>
 
-<input id="searchInput" placeholder="Search...">
-<button onclick="search()">Search</button>
-
-<div id="results"></div>
+  <div id="results"></div>
+</div>
 
 <script>
   // Replace this URL with the RAW JSON file from your GitHub repo
   const JSON_URL = 'https://raw.githubusercontent.com/username/repo/main/frenchstudy.json';
-
   let dataCache = [];
 
-  // Load JSON once on page load
   async function loadData() {
     try {
       const res = await fetch(JSON_URL);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       dataCache = await res.json();
     } catch (err) {
       console.error('Failed to load JSON:', err);
-      document.getElementById('results').innerHTML = `<p style="color:red;">Failed to load data. Check the JSON URL.</p>`;
+      document.getElementById('results').innerHTML =
+        `<p class="status-msg error">⚠ Failed to load data. Check the JSON URL in the source.</p>`;
     }
   }
 
   async function search() {
-    const query = document.getElementById("searchInput").value.toLowerCase();
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
     if (!query) return;
 
-    // Filter cached data
-    const results = dataCache.filter(item => 
+    const results = dataCache.filter(item =>
       (item.title && item.title.toLowerCase().includes(query)) ||
       (item.snippet && item.snippet.toLowerCase().includes(query))
     );
@@ -90,24 +307,38 @@
     container.innerHTML = "";
 
     if (results.length === 0) {
-      container.innerHTML = "<p>No results found.</p>";
+      container.innerHTML = `<p class="status-msg">No results found for "<strong>${escapeHtml(query)}</strong>"</p>`;
       return;
     }
 
-    results.forEach(r => {
+    const countEl = document.createElement("p");
+    countEl.className = "count";
+    countEl.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
+    container.appendChild(countEl);
+
+    results.forEach((r, i) => {
       const div = document.createElement("div");
       div.className = "result";
+      div.style.animationDelay = `${i * 0.05}s`;
+      const domain = r.url ? new URL(r.url).hostname : '';
       div.innerHTML = `
-        <a href="${r.url}" target="_blank">${r.title}</a>
-        <p>${r.snippet}</p>
+        <a href="${r.url}" target="_blank" rel="noopener">${escapeHtml(r.title)}</a>
+        ${domain ? `<div class="result-url">${domain}</div>` : ''}
+        <p>${escapeHtml(r.snippet || '')}</p>
       `;
       container.appendChild(div);
     });
   }
 
-  // Load JSON on page load
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') search();
+  });
+
   window.addEventListener('DOMContentLoaded', loadData);
 </script>
-
 </body>
 </html>
