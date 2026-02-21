@@ -878,7 +878,7 @@ function closeSearchPanel(){
 function doSearch(q){
   if(!q.trim())return;
   document.getElementById('iframePlaceholder').classList.add('hidden');
-  document.getElementById('ddgFrame').src='https://moonprox.onrender.com/search?q='+encodeURIComponent(q);
+  document.getElementById('ddgFrame').src='https://moon20prox-production.up.railway.app/search?q='+encodeURIComponent(q);
 }
 document.getElementById('openSearchPanelBtn').addEventListener('click',()=>openSearchPanel(''));
 document.getElementById('closeSearchPanel').addEventListener('click',closeSearchPanel);
@@ -927,5 +927,6 @@ initLockScreen();
 </script>
 </body>
 </html>
+
 
 
