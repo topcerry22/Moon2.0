@@ -359,7 +359,7 @@
           <input type="text" class="s-input" id="sTabTitle" placeholder="Moon" maxlength="40">
         </div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Tab Icon</div><div class="settings-row-sub">Emoji shown as favicon</div></div>
+          <div><div class="settings-row-label">Tab Icon</div><div class="settings-row-sub">Emoji shown as </div></div>
           <input type="text" class="s-input" id="sTabIcon" placeholder="🌙" maxlength="4">
         </div>
         <div class="settings-row">
@@ -690,11 +690,6 @@ function applyTabDisguise(title,icon){
   SFX.success();
 }
 
-document.getElementById('applyTabBtn').addEventListener('click',()=>{
-  const title=document.getElementById('sTabTitle').value.trim();
-  const icon=document.getElementById('sTabIcon').value.trim();
-  applyTabDisguise(title||'Moon',icon||'🌙');
-});
 
 // Preset buttons
 document.querySelectorAll('[data-title]').forEach(btn=>{
@@ -932,4 +927,5 @@ initLockScreen();
 </script>
 </body>
 </html>
+
 
