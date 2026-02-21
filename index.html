@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moon</title>
+<title>Google Classroom</title>
 <link id="faviconLink" rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%234f8aff'/><circle cx='11' cy='12' r='4' fill='rgba(255,255,255,0.15)'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -822,7 +822,7 @@ document.getElementById('settingsBackdrop').addEventListener('click',closeSettin
 //  GAMES
 // ════════════════════════════════════════════════════
 let allGames=[];
-fetch('games.json').then(r=>r.json()).then(g=>{allGames=g;}).catch(()=>{allGames=[];});
+fetch('content.json').then(r=>r.json()).then(g=>{allGames=g;}).catch(()=>{allGames=[];});
 
 function openPanel(){
   document.getElementById('gamesPanel').classList.add('open');
@@ -932,3 +932,4 @@ initLockScreen();
 </script>
 </body>
 </html>
+
