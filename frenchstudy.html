@@ -1,10 +1,13 @@
 
+Moon search · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌙 Moon Search</title>
+  <title>Computer Science</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -266,7 +269,7 @@
   <header>
     <span class="moon-icon">🌙</span>
     <h1>Moon Search</h1>
-    <p class="subtitle">French Study Collection</p>
+
   </header>
 
   <div class="search-bar">
@@ -278,67 +281,60 @@
 </div>
 
 <script>
-  // Replace this URL with the RAW JSON file from your GitHub repo
-  const JSON_URL = 'https://raw.githubusercontent.com/username/repo/main/frenchstudy.json';
-  let dataCache = [];
-
-  async function loadData() {
-    try {
-      const res = await fetch(JSON_URL);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      dataCache = await res.json();
-    } catch (err) {
-      console.error('Failed to load JSON:', err);
-      document.getElementById('results').innerHTML =
-        `<p class="status-msg error">⚠ Failed to load data. Check the JSON URL in the source.</p>`;
-    }
-  }
+  const API_BASE = 'https://moon20prox-production.up.railway.app';
 
   async function search() {
-    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    const query = document.getElementById("searchInput").value.trim();
     if (!query) return;
 
-    const results = dataCache.filter(item =>
-      (item.title && item.title.toLowerCase().includes(query)) ||
-      (item.snippet && item.snippet.toLowerCase().includes(query))
-    );
-
     const container = document.getElementById("results");
-    container.innerHTML = "";
+    container.innerHTML = `<p class="status-msg">Searching...</p>`;
 
-    if (results.length === 0) {
-      container.innerHTML = `<p class="status-msg">No results found for "<strong>${escapeHtml(query)}</strong>"</p>`;
-      return;
+    try {
+      const res = await fetch(`${API_BASE}/search?q=${encodeURIComponent(query)}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      container.innerHTML = "";
+
+      if (!data.results || data.results.length === 0) {
+        container.innerHTML = `<p class="status-msg">No results found for "<strong>${escapeHtml(query)}</strong>"</p>`;
+        return;
+      }
+
+      const countEl = document.createElement("p");
+      countEl.className = "count";
+      countEl.textContent = `${data.count} result${data.count !== 1 ? 's' : ''}`;
+      container.appendChild(countEl);
+
+      data.results.forEach((r, i) => {
+        const div = document.createElement("div");
+        div.className = "result";
+        div.style.animationDelay = `${i * 0.05}s`;
+        let domain = '';
+        try { domain = r.url ? new URL(r.url).hostname : ''; } catch(e) {}
+        div.innerHTML = `
+          <a href="${r.url}" target="_blank" rel="noopener">${escapeHtml(r.title)}</a>
+          ${domain ? `<div class="result-url">${domain}</div>` : ''}
+          <p>${escapeHtml(r.snippet || '')}</p>
+        `;
+        container.appendChild(div);
+      });
+
+    } catch (err) {
+      console.error('Search error:', err);
+      container.innerHTML = `<p class="status-msg error">⚠ Search failed. Make sure the server is running.</p>`;
     }
-
-    const countEl = document.createElement("p");
-    countEl.className = "count";
-    countEl.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
-    container.appendChild(countEl);
-
-    results.forEach((r, i) => {
-      const div = document.createElement("div");
-      div.className = "result";
-      div.style.animationDelay = `${i * 0.05}s`;
-      const domain = r.url ? new URL(r.url).hostname : '';
-      div.innerHTML = `
-        <a href="${r.url}" target="_blank" rel="noopener">${escapeHtml(r.title)}</a>
-        ${domain ? `<div class="result-url">${domain}</div>` : ''}
-        <p>${escapeHtml(r.snippet || '')}</p>
-      `;
-      container.appendChild(div);
-    });
   }
 
   function escapeHtml(str) {
+    if (!str) return '';
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   document.getElementById('searchInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') search();
   });
-
-  window.addEventListener('DOMContentLoaded', loadData);
 </script>
 </body>
 </html>
