@@ -21,14 +21,14 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;overflow:hidden;height:100vh;width:100vw;transition:background .4s,color .4s;}
 
-  /* ── STARS ── */
+
   #stars{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 20% 50%,rgba(79,138,255,0.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(167,139,250,0.07) 0%,transparent 60%),var(--bg);overflow:hidden;transition:opacity .5s;}
   [data-theme="light"] #stars{opacity:0;pointer-events:none;}
   #stars::before,#stars::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,0.6) 0%,transparent 100%),radial-gradient(1px 1px at 25% 40%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 50% 10%,rgba(255,255,255,0.7) 0%,transparent 100%),radial-gradient(1px 1px at 70% 60%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 85% 25%,rgba(255,255,255,0.6) 0%,transparent 100%),radial-gradient(1px 1px at 40% 75%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 60% 85%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 90% 90%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 5% 90%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 33% 55%,rgba(255,255,255,0.3) 0%,transparent 100%);background-size:600px 600px;animation:twinkle 6s ease-in-out infinite alternate;}
   #stars::after{background-position:300px 300px;animation-delay:-3s;animation-duration:8s;}
   @keyframes twinkle{from{opacity:.6}to{opacity:1}}
 
-  /* ── PASSWORD LOCK SCREEN ── */
+
   #lockScreen{position:fixed;inset:0;z-index:2000;background:#06080f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;}
   #lockScreen.off{display:none;}
   .lock-moon{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d0d8ff,#7090e0 40%,#1a2460);box-shadow:0 0 40px rgba(79,138,255,0.6),0 0 80px rgba(79,138,255,0.2);animation:moonPulse 2s ease-in-out infinite;}
@@ -47,7 +47,7 @@
   .lock-error{font-size:.65rem;letter-spacing:.12em;color:#ff4455;text-align:center;min-height:1em;transition:opacity .2s;}
   .lock-attempts{font-size:.6rem;letter-spacing:.1em;color:#5a6a8a;text-align:center;}
 
-  /* ── LOADER ── */
+
   #loader{position:fixed;inset:0;z-index:1000;background:#06080f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .8s ease,visibility .8s ease;}
   #loader.hidden{opacity:0;visibility:hidden;}
   .loader-orbit{position:relative;width:130px;height:130px;}
@@ -70,7 +70,7 @@
   .loader-status .cur{display:inline-block;width:6px;height:11px;background:#4f8aff;margin-left:3px;vertical-align:middle;animation:curBlink .65s step-end infinite;}
   @keyframes curBlink{0%,100%{opacity:1}50%{opacity:0}}
 
-  /* ── MAIN MENU ── */
+  
   #mainMenu{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease;pointer-events:none;}
   #mainMenu.visible{opacity:1;pointer-events:all;}
   .menu-moon{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d0d8ff,#7090e0 40%,#1a2460);box-shadow:0 0 60px rgba(79,138,255,.5),0 0 120px rgba(79,138,255,.15);margin-bottom:1.5rem;position:relative;animation:floatMoon 5s ease-in-out infinite;transition:box-shadow .4s;}
@@ -91,7 +91,7 @@
   .menu-btn.panic-btn{border-color:rgba(255,75,75,.35);}.menu-btn.panic-btn .btn-num,.menu-btn.panic-btn .btn-arrow{color:#ff5555;}.menu-btn.panic-btn:hover{border-color:#ff5555;background:rgba(255,50,50,.07);}
   .menu-btn.theme-btn{border-color:rgba(255,200,50,.3);}.menu-btn.theme-btn .btn-num,.menu-btn.theme-btn .btn-arrow{color:#ffcc33;}.menu-btn.theme-btn:hover{border-color:#ffcc33;}
 
-  /* ── MENU SEARCH ── */
+  
   .menu-search-wrap{margin-top:1.5rem;width:260px;animation:slideUp .8s cubic-bezier(.2,1,.3,1) both;animation-delay:1s;}
   .menu-search-inner{display:flex;border:1px solid var(--border);border-radius:4px;overflow:hidden;background:var(--card);transition:border-color .2s,box-shadow .2s;}
   .menu-search-inner:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,138,255,.12);}
@@ -100,7 +100,7 @@
   .menu-search-btn{padding:0 1rem;background:transparent;border:none;border-left:1px solid var(--border);color:var(--accent);cursor:pointer;font-size:1rem;transition:background .2s,color .2s;}
   .menu-search-btn:hover{background:rgba(79,138,255,.1);}
 
-  /* ── GAMES PANEL ── */
+  
   #gamesPanel{position:fixed;inset:0;z-index:20;pointer-events:none;}
   .panel-backdrop{position:absolute;inset:0;background:rgba(6,8,15,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .4s ease;cursor:pointer;}
   [data-theme="light"] .panel-backdrop{background:rgba(180,190,220,.45);}
@@ -117,16 +117,16 @@
   .panel-grid{flex:1;overflow-y:auto;padding:.5rem 1rem 1.5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;align-content:start;}
   .panel-grid::-webkit-scrollbar{width:5px;}.panel-grid::-webkit-scrollbar-track{background:transparent;}.panel-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
 
-  /* ── GAME CARD (animated hover preview) ── */
+ 
   .game-card{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;animation:cardIn .4s cubic-bezier(.2,1,.3,1) both;position:relative;}
   .game-card:hover{transform:translateY(-6px) scale(1.02);border-color:var(--accent);box-shadow:0 12px 32px rgba(79,138,255,.25),0 0 0 1px rgba(79,138,255,.15);}
   .game-card .img-wrap{position:relative;overflow:hidden;aspect-ratio:16/10;}
   .game-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,filter .3s ease;}
   .game-card:hover img{transform:scale(1.08);filter:brightness(1.1);}
-  /* shimmer on hover */
+
   .game-card .img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s ease;}
   .game-card:hover .img-wrap::after{transform:translateX(100%);}
-  /* play button overlay */
+ 
   .game-card .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,8,15,.5);opacity:0;transition:opacity .25s;}
   .game-card:hover .play-overlay{opacity:1;}
   .play-btn-icon{width:36px;height:36px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff;padding-left:2px;}
@@ -135,7 +135,7 @@
   .no-results{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted);font-size:.75rem;letter-spacing:.15em;}
   @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ── SEARCH PANEL ── */
+
   #searchPanel{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;pointer-events:none;opacity:0;transition:opacity .4s ease;}
   #searchPanel.open{pointer-events:all;opacity:1;}
   .search-panel-header{display:flex;align-items:center;gap:.75rem;padding:.9rem 1.25rem;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;}
@@ -154,7 +154,7 @@
   .placeholder-icon{font-size:2.5rem;opacity:.3;}
   #ddgFrame{position:absolute;inset:0;width:100%;height:100%;border:none;display:block;}
 
-  /* ── SETTINGS PANEL ── */
+
   #settingsPanel{position:fixed;inset:0;z-index:25;pointer-events:none;}
   #settingsPanel.open{pointer-events:all;}
   #settingsPanel .panel-backdrop{position:absolute;inset:0;background:rgba(6,8,15,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .4s ease;cursor:pointer;}
@@ -169,32 +169,32 @@
   .settings-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
   .settings-row-label{font-size:.78rem;letter-spacing:.1em;color:var(--text);}
   .settings-row-sub{font-size:.62rem;letter-spacing:.06em;color:var(--muted);margin-top:2px;}
-  /* text input in settings */
+
   .s-input{flex:1;max-width:180px;padding:.55rem .75rem;background:var(--card);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Space Mono',monospace;font-size:.75rem;outline:none;transition:border-color .2s,box-shadow .2s;}
   .s-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,138,255,.1);}
-  /* toggle switch */
+
   .s-toggle{position:relative;width:42px;height:22px;flex-shrink:0;}
   .s-toggle input{opacity:0;width:0;height:0;position:absolute;}
   .s-slider{position:absolute;inset:0;background:var(--border);border-radius:11px;cursor:pointer;transition:background .2s;}
   .s-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;}
   .s-toggle input:checked+.s-slider{background:var(--accent);}
   .s-toggle input:checked+.s-slider::before{transform:translateX(20px);}
-  /* small btn in settings */
+
   .s-btn{padding:.5rem .9rem;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;cursor:pointer;transition:border-color .2s,background .2s,color .2s;white-space:nowrap;}
   .s-btn:hover{border-color:var(--accent);background:rgba(79,138,255,.08);}
   .s-btn.danger{border-color:rgba(255,68,85,.4);color:#ff6677;}.s-btn.danger:hover{border-color:#ff4455;background:rgba(255,68,85,.1);}
   .s-btn.success-flash{border-color:var(--success)!important;color:var(--success)!important;}
-  /* color swatches for accent */
+
   .color-row{display:flex;gap:.5rem;flex-wrap:wrap;}
   .c-swatch{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s,border-color .15s;}
   .c-swatch:hover{transform:scale(1.2);}
   .c-swatch.active{border-color:#fff;}
-  /* password change in settings */
+
   .pw-form{display:flex;flex-direction:column;gap:.5rem;}
   .pw-status{font-size:.65rem;letter-spacing:.1em;min-height:1em;transition:color .2s;}
   .pw-status.ok{color:var(--success);}.pw-status.err{color:var(--danger);}
 
-  /* ── ORBIT DECO ── */
+
   .orbit-ring{position:fixed;border-radius:50%;border:1px solid rgba(79,138,255,.08);pointer-events:none;z-index:1;transition:opacity .4s;}
   [data-theme="light"] .orbit-ring{opacity:.25;}
   .orbit-ring:nth-child(1){width:400px;height:400px;top:50%;left:50%;transform:translate(-50%,-50%)}
@@ -203,7 +203,7 @@
   @keyframes spinRing{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
   .orbit-dot{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent);top:-2px;left:50%;margin-left:-2px;box-shadow:0 0 8px var(--accent)}
 
-  /* ── PANIC OVERLAY ── */
+
   #panicOverlay{display:none;position:fixed;inset:0;z-index:9999;background:#fff;flex-direction:column;}
   #panicOverlay.active{display:flex;}
   .fake-page{width:100%;height:100%;background:#fff;font-family:Arial,sans-serif;display:flex;flex-direction:column;overflow:hidden;}
@@ -223,11 +223,11 @@
   .fake-class-body{padding:12px;font-size:13px;color:#5f6368;}
   .panic-hint{position:fixed;bottom:14px;right:16px;font-size:11px;color:rgba(0,0,0,.25);font-family:Arial,sans-serif;}
 
-  /* ── SOUND BTN ── */
+
   #soundBtn{position:fixed;bottom:1.1rem;right:1.1rem;z-index:50;width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,opacity .2s;opacity:.55;}
   #soundBtn:hover{border-color:var(--accent);color:var(--text);opacity:1;}
 
-  /* ── TOAST ── */
+
   #toast{position:fixed;bottom:4rem;left:50%;transform:translateX(-50%) translateY(10px);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.6rem 1.2rem;font-size:.7rem;letter-spacing:.12em;color:var(--text);opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:100;white-space:nowrap;}
   #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
   #toast.ok{border-color:var(--success);color:var(--success);}
@@ -244,9 +244,6 @@
 <button id="soundBtn" title="Toggle sound">🔊</button>
 <div id="toast"></div>
 
-<!-- ══════════════════════════════════════════
-     PASSWORD LOCK SCREEN
-════════════════════════════════════════════ -->
 <div id="lockScreen">
   <div class="lock-moon"></div>
   <div class="lock-title">MOON</div>
@@ -261,9 +258,7 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     LOADER
-════════════════════════════════════════════ -->
+
 <div id="loader" style="display:none;">
   <div class="loader-orbit">
     <div class="orbit-track"><div class="orbit-sat"></div></div>
@@ -275,9 +270,6 @@
   <div class="loader-status" id="loaderStatus">INITIALIZING...<span class="cur"></span></div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     MAIN MENU
-════════════════════════════════════════════ -->
 <div id="mainMenu">
   <div class="menu-moon"></div>
   <div class="menu-title" id="menuTitle">MOON</div>
@@ -297,9 +289,7 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     GAMES PANEL
-════════════════════════════════════════════ -->
+
 <div id="gamesPanel">
   <div class="panel-backdrop" id="panelBackdrop"></div>
   <div class="panel-drawer">
@@ -318,9 +308,7 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SEARCH PANEL
-════════════════════════════════════════════ -->
+
 <div id="searchPanel">
   <div class="search-panel-header">
     <span class="search-panel-title">// WEB SEARCH</span>
@@ -339,9 +327,7 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     SETTINGS PANEL
-════════════════════════════════════════════ -->
+
 <div id="settingsPanel">
   <div class="panel-backdrop" id="settingsBackdrop"></div>
   <div class="settings-drawer">
@@ -351,7 +337,7 @@
     </div>
     <div class="settings-body">
 
-      <!-- TAB DISGUISE -->
+    
       <div class="settings-section">
         <div class="settings-label">TAB DISGUISE</div>
         <div class="settings-row">
@@ -376,7 +362,6 @@
         </div>
       </div>
 
-      <!-- APPEARANCE -->
       <div class="settings-section">
         <div class="settings-label">APPEARANCE</div>
         <div class="settings-row">
@@ -397,7 +382,7 @@
         </div>
       </div>
 
-      <!-- SOUND -->
+    
       <div class="settings-section">
         <div class="settings-label">SOUND</div>
         <div class="settings-row">
@@ -406,7 +391,7 @@
         </div>
       </div>
 
-      <!-- PASSWORD -->
+  
       <div class="settings-section">
         <div class="settings-label">ACCESS PASSWORD</div>
         <div class="settings-row-label" style="font-size:.72rem;color:var(--muted);line-height:1.5">
@@ -425,7 +410,7 @@
         </div>
       </div>
 
-      <!-- DANGER ZONE -->
+
       <div class="settings-section">
         <div class="settings-label">DANGER ZONE</div>
         <div class="settings-row">
@@ -438,9 +423,7 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     PANIC OVERLAY
-════════════════════════════════════════════ -->
+
 <div id="panicOverlay">
   <div class="fake-page">
     <div class="fake-topbar">
@@ -502,12 +485,7 @@ function showToast(msg,type=''){
   toastTO=setTimeout(()=>el.className='',2200);
 }
 
-// ════════════════════════════════════════════════════
-//  PASSWORD SYSTEM
-//  Uses a simple hash stored in localStorage.
-//  A "session token" is also stored — when password
-//  changes, token is wiped, so active users get kicked.
-// ════════════════════════════════════════════════════
+
 const PW_KEY     = 'moon_pw_hash';
 const TOKEN_KEY  = 'moon_session_token';
 const TOKEN_GEN  = 'moon_token_gen';   // generation counter
@@ -558,7 +536,7 @@ function grantSession(){
   sessionStorage.setItem(TOKEN_KEY,gen);
 }
 
-// ── Lock screen logic ──
+
 let lockAttempts=0;
 const MAX_ATTEMPTS=5;
 
@@ -570,7 +548,7 @@ function initLockScreen(){
     startLoader();
     return;
   }
-  // Show lock screen
+
   document.getElementById('lockInput').focus();
 }
 
@@ -620,9 +598,7 @@ function tryUnlock(){
 document.getElementById('lockSubmit').addEventListener('click',tryUnlock);
 document.getElementById('lockInput').addEventListener('keydown',e=>{ if(e.key==='Enter') tryUnlock(); });
 
-// ════════════════════════════════════════════════════
-//  LOADER
-// ════════════════════════════════════════════════════
+
 const MSGS=['INITIALIZING...','LOADING ASSETS...','DECRYPTING MODULES...','SYNCING DATA...','ESTABLISHING CONNECTION...','READY'];
 function startLoader(){
   const loaderEl=document.getElementById('loader');
@@ -641,9 +617,6 @@ function startLoader(){
   },2700);
 }
 
-// ════════════════════════════════════════════════════
-//  SETTINGS — LOAD & SAVE
-// ════════════════════════════════════════════════════
 const SETTINGS_KEY='moon_settings';
 function getSettings(){
   try{return JSON.parse(localStorage.getItem(SETTINGS_KEY))||{};}catch{return{};}
@@ -674,9 +647,7 @@ function applyStoredSettings(){
   document.getElementById('sTabIcon').value=s.tabIcon||'';
 }
 
-// ════════════════════════════════════════════════════
-//  TAB TITLE & FAVICON
-// ════════════════════════════════════════════════════
+
 function setFaviconEmoji(emoji){
   const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>${emoji}</text></svg>`;
   document.getElementById('faviconLink').href='data:image/svg+xml,'+encodeURIComponent(svg);
@@ -813,9 +784,7 @@ document.getElementById('settingsBtn').addEventListener('click',openSettings);
 document.getElementById('closeSettings').addEventListener('click',closeSettings);
 document.getElementById('settingsBackdrop').addEventListener('click',closeSettings);
 
-// ════════════════════════════════════════════════════
-//  GAMES
-// ════════════════════════════════════════════════════
+
 let allGames=[];
 fetch('content.json').then(r=>r.json()).then(g=>{allGames=g;}).catch(()=>{allGames=[];});
 
@@ -860,9 +829,7 @@ document.getElementById('searchInput').addEventListener('input',e=>{
   renderGames(q?allGames.filter(g=>g.title.toLowerCase().includes(q)):allGames);
 });
 
-// ════════════════════════════════════════════════════
-//  SEARCH PANEL
-// ════════════════════════════════════════════════════
+
 function openSearchPanel(query){
   document.getElementById('searchPanel').classList.add('open');
   const inp=document.getElementById('drawerSearchInput');
@@ -887,9 +854,7 @@ document.getElementById('menuSearchInput').addEventListener('keydown',e=>{if(e.k
 document.getElementById('drawerSearchGo').addEventListener('click',()=>doSearch(document.getElementById('drawerSearchInput').value));
 document.getElementById('drawerSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch(e.target.value);});
 
-// ════════════════════════════════════════════════════
-//  CLOAK TAB
-// ════════════════════════════════════════════════════
+
 function cloakTab(){
   const tab=window.open('about:blank','_blank');
   if(!tab){alert('Pop-up blocked! Please allow pop-ups.');return;}
@@ -899,9 +864,7 @@ function cloakTab(){
 }
 document.getElementById('cloakBtn').addEventListener('click',cloakTab);
 
-// ════════════════════════════════════════════════════
-//  PANIC
-// ════════════════════════════════════════════════════
+
 let panicOn=false;
 function triggerPanic(){panicOn=true;document.getElementById('panicOverlay').classList.add('active');document.title='Google Classroom';SFX.panic();}
 function exitPanic(){panicOn=false;document.getElementById('panicOverlay').classList.remove('active');document.title=document.getElementById('sTabTitle').value||'Moon';}
@@ -920,13 +883,12 @@ document.addEventListener('keydown',e=>{
 // Hover sounds on menu buttons
 document.querySelectorAll('.menu-btn').forEach(b=>b.addEventListener('mouseenter',()=>SFX.hover()));
 
-// ════════════════════════════════════════════════════
-//  BOOT
-// ════════════════════════════════════════════════════
+
 initLockScreen();
 </script>
 </body>
 </html>
+
 
 
 
