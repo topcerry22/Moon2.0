@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+let newTab = window.open("about:blank");
+newTab.document.write(document.documentElement.outerHTML);
+newTab.document.close();
+
+
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -888,6 +894,7 @@ initLockScreen();
 </script>
 </body>
 </html>
+
 
 
 
