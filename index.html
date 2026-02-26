@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-
-
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -24,32 +21,11 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;overflow:hidden;height:100vh;width:100vw;transition:background .4s,color .4s;}
 
-
   #stars{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 20% 50%,rgba(79,138,255,0.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(167,139,250,0.07) 0%,transparent 60%),var(--bg);overflow:hidden;transition:opacity .5s;}
   [data-theme="light"] #stars{opacity:0;pointer-events:none;}
   #stars::before,#stars::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,0.6) 0%,transparent 100%),radial-gradient(1px 1px at 25% 40%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 50% 10%,rgba(255,255,255,0.7) 0%,transparent 100%),radial-gradient(1px 1px at 70% 60%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 85% 25%,rgba(255,255,255,0.6) 0%,transparent 100%),radial-gradient(1px 1px at 40% 75%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 60% 85%,rgba(255,255,255,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 90% 90%,rgba(255,255,255,0.5) 0%,transparent 100%),radial-gradient(1px 1px at 5% 90%,rgba(255,255,255,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 33% 55%,rgba(255,255,255,0.3) 0%,transparent 100%);background-size:600px 600px;animation:twinkle 6s ease-in-out infinite alternate;}
   #stars::after{background-position:300px 300px;animation-delay:-3s;animation-duration:8s;}
   @keyframes twinkle{from{opacity:.6}to{opacity:1}}
-
-
-  #lockScreen{position:fixed;inset:0;z-index:2000;background:#06080f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;}
-  #lockScreen.off{display:none;}
-  .lock-moon{width:72px;height:72px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d0d8ff,#7090e0 40%,#1a2460);box-shadow:0 0 40px rgba(79,138,255,0.6),0 0 80px rgba(79,138,255,0.2);animation:moonPulse 2s ease-in-out infinite;}
-  @keyframes moonPulse{0%,100%{box-shadow:0 0 40px rgba(79,138,255,.6),0 0 80px rgba(79,138,255,.2);transform:scale(1)}50%{box-shadow:0 0 60px rgba(79,138,255,1),0 0 120px rgba(79,138,255,.4);transform:scale(1.06)}}
-  .lock-title{font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:900;letter-spacing:.35em;color:#4f8aff;text-shadow:0 0 30px rgba(79,138,255,.5);}
-  .lock-sub{font-size:.7rem;letter-spacing:.2em;color:#5a6a8a;}
-  .lock-form{display:flex;flex-direction:column;gap:.75rem;width:280px;}
-  .lock-input-wrap{position:relative;}
-  .lock-input{width:100%;padding:.9rem 1.1rem;background:#0d1120;border:1px solid #1e2a45;border-radius:4px;color:#e8eeff;font-family:'Space Mono',monospace;font-size:.9rem;letter-spacing:.15em;outline:none;text-align:center;transition:border-color .2s,box-shadow .2s;}
-  .lock-input:focus{border-color:#4f8aff;box-shadow:0 0 0 3px rgba(79,138,255,.12);}
-  .lock-input.shake{animation:shake .35s ease;}
-  @keyframes shake{0%,100%{transform:none}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
-  .lock-input.error{border-color:#ff4455;box-shadow:0 0 0 3px rgba(255,68,85,.12);}
-  .lock-btn{padding:.85rem;background:transparent;border:1px solid #4f8aff;border-radius:4px;color:#4f8aff;font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.2em;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s;}
-  .lock-btn:hover{background:#4f8aff;color:#000;box-shadow:0 0 20px rgba(79,138,255,.4);}
-  .lock-error{font-size:.65rem;letter-spacing:.12em;color:#ff4455;text-align:center;min-height:1em;transition:opacity .2s;}
-  .lock-attempts{font-size:.6rem;letter-spacing:.1em;color:#5a6a8a;text-align:center;}
-
 
   #loader{position:fixed;inset:0;z-index:1000;background:#06080f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transition:opacity .8s ease,visibility .8s ease;}
   #loader.hidden{opacity:0;visibility:hidden;}
@@ -73,7 +49,6 @@
   .loader-status .cur{display:inline-block;width:6px;height:11px;background:#4f8aff;margin-left:3px;vertical-align:middle;animation:curBlink .65s step-end infinite;}
   @keyframes curBlink{0%,100%{opacity:1}50%{opacity:0}}
 
-  
   #mainMenu{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease;pointer-events:none;}
   #mainMenu.visible{opacity:1;pointer-events:all;}
   .menu-moon{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#d0d8ff,#7090e0 40%,#1a2460);box-shadow:0 0 60px rgba(79,138,255,.5),0 0 120px rgba(79,138,255,.15);margin-bottom:1.5rem;position:relative;animation:floatMoon 5s ease-in-out infinite;transition:box-shadow .4s;}
@@ -84,7 +59,7 @@
   @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
   .menu-nav{display:flex;flex-direction:column;gap:.75rem;align-items:center;}
   .menu-btn{width:260px;padding:1rem 1.5rem;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.2em;cursor:pointer;text-align:left;position:relative;overflow:hidden;transition:border-color .2s,color .2s,background .2s;animation:slideUp .8s cubic-bezier(.2,1,.3,1) both;}
-  .menu-btn:nth-child(1){animation-delay:.3s}.menu-btn:nth-child(2){animation-delay:.4s}.menu-btn:nth-child(3){animation-delay:.5s}.menu-btn:nth-child(4){animation-delay:.6s}.menu-btn:nth-child(5){animation-delay:.7s}.menu-btn:nth-child(6){animation-delay:.8s}.menu-btn:nth-child(7){animation-delay:.9s}
+  .menu-btn:nth-child(1){animation-delay:.3s}.menu-btn:nth-child(2){animation-delay:.4s}.menu-btn:nth-child(3){animation-delay:.5s}.menu-btn:nth-child(4){animation-delay:.6s}.menu-btn:nth-child(5){animation-delay:.7s}.menu-btn:nth-child(6){animation-delay:.8s}
   .menu-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .3s;z-index:-1;}
   .menu-btn:hover{border-color:var(--accent);}.menu-btn:hover::before{opacity:.12;}
   .menu-btn .btn-num{color:var(--accent);margin-right:1rem;font-size:.7rem;}
@@ -94,8 +69,7 @@
   .menu-btn.panic-btn{border-color:rgba(255,75,75,.35);}.menu-btn.panic-btn .btn-num,.menu-btn.panic-btn .btn-arrow{color:#ff5555;}.menu-btn.panic-btn:hover{border-color:#ff5555;background:rgba(255,50,50,.07);}
   .menu-btn.theme-btn{border-color:rgba(255,200,50,.3);}.menu-btn.theme-btn .btn-num,.menu-btn.theme-btn .btn-arrow{color:#ffcc33;}.menu-btn.theme-btn:hover{border-color:#ffcc33;}
 
-  
-  .menu-search-wrap{margin-top:1.5rem;width:260px;animation:slideUp .8s cubic-bezier(.2,1,.3,1) both;animation-delay:1s;}
+  .menu-search-wrap{margin-top:1.5rem;width:260px;animation:slideUp .8s cubic-bezier(.2,1,.3,1) both;animation-delay:.9s;}
   .menu-search-inner{display:flex;border:1px solid var(--border);border-radius:4px;overflow:hidden;background:var(--card);transition:border-color .2s,box-shadow .2s;}
   .menu-search-inner:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,138,255,.12);}
   #menuSearchInput{flex:1;padding:.75rem .9rem;background:transparent;border:none;color:var(--text);font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.08em;outline:none;}
@@ -103,7 +77,6 @@
   .menu-search-btn{padding:0 1rem;background:transparent;border:none;border-left:1px solid var(--border);color:var(--accent);cursor:pointer;font-size:1rem;transition:background .2s,color .2s;}
   .menu-search-btn:hover{background:rgba(79,138,255,.1);}
 
-  
   #gamesPanel{position:fixed;inset:0;z-index:20;pointer-events:none;}
   .panel-backdrop{position:absolute;inset:0;background:rgba(6,8,15,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .4s ease;cursor:pointer;}
   [data-theme="light"] .panel-backdrop{background:rgba(180,190,220,.45);}
@@ -120,16 +93,13 @@
   .panel-grid{flex:1;overflow-y:auto;padding:.5rem 1rem 1.5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;align-content:start;}
   .panel-grid::-webkit-scrollbar{width:5px;}.panel-grid::-webkit-scrollbar-track{background:transparent;}.panel-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
 
- 
   .game-card{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;animation:cardIn .4s cubic-bezier(.2,1,.3,1) both;position:relative;}
   .game-card:hover{transform:translateY(-6px) scale(1.02);border-color:var(--accent);box-shadow:0 12px 32px rgba(79,138,255,.25),0 0 0 1px rgba(79,138,255,.15);}
   .game-card .img-wrap{position:relative;overflow:hidden;aspect-ratio:16/10;}
   .game-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,filter .3s ease;}
   .game-card:hover img{transform:scale(1.08);filter:brightness(1.1);}
-
   .game-card .img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s ease;}
   .game-card:hover .img-wrap::after{transform:translateX(100%);}
- 
   .game-card .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,8,15,.5);opacity:0;transition:opacity .25s;}
   .game-card:hover .play-overlay{opacity:1;}
   .play-btn-icon{width:36px;height:36px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff;padding-left:2px;}
@@ -137,7 +107,6 @@
   .game-card-label h3{font-family:'Orbitron',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .no-results{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--muted);font-size:.75rem;letter-spacing:.15em;}
   @keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
 
   #searchPanel{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;pointer-events:none;opacity:0;transition:opacity .4s ease;}
   #searchPanel.open{pointer-events:all;opacity:1;}
@@ -157,7 +126,6 @@
   .placeholder-icon{font-size:2.5rem;opacity:.3;}
   #ddgFrame{position:absolute;inset:0;width:100%;height:100%;border:none;display:block;}
 
-
   #settingsPanel{position:fixed;inset:0;z-index:25;pointer-events:none;}
   #settingsPanel.open{pointer-events:all;}
   #settingsPanel .panel-backdrop{position:absolute;inset:0;background:rgba(6,8,15,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .4s ease;cursor:pointer;}
@@ -172,31 +140,21 @@
   .settings-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
   .settings-row-label{font-size:.78rem;letter-spacing:.1em;color:var(--text);}
   .settings-row-sub{font-size:.62rem;letter-spacing:.06em;color:var(--muted);margin-top:2px;}
-
   .s-input{flex:1;max-width:180px;padding:.55rem .75rem;background:var(--card);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Space Mono',monospace;font-size:.75rem;outline:none;transition:border-color .2s,box-shadow .2s;}
   .s-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,138,255,.1);}
-
   .s-toggle{position:relative;width:42px;height:22px;flex-shrink:0;}
   .s-toggle input{opacity:0;width:0;height:0;position:absolute;}
   .s-slider{position:absolute;inset:0;background:var(--border);border-radius:11px;cursor:pointer;transition:background .2s;}
   .s-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;}
   .s-toggle input:checked+.s-slider{background:var(--accent);}
   .s-toggle input:checked+.s-slider::before{transform:translateX(20px);}
-
   .s-btn{padding:.5rem .9rem;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.1em;cursor:pointer;transition:border-color .2s,background .2s,color .2s;white-space:nowrap;}
   .s-btn:hover{border-color:var(--accent);background:rgba(79,138,255,.08);}
   .s-btn.danger{border-color:rgba(255,68,85,.4);color:#ff6677;}.s-btn.danger:hover{border-color:#ff4455;background:rgba(255,68,85,.1);}
-  .s-btn.success-flash{border-color:var(--success)!important;color:var(--success)!important;}
-
   .color-row{display:flex;gap:.5rem;flex-wrap:wrap;}
   .c-swatch{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s,border-color .15s;}
   .c-swatch:hover{transform:scale(1.2);}
   .c-swatch.active{border-color:#fff;}
-
-  .pw-form{display:flex;flex-direction:column;gap:.5rem;}
-  .pw-status{font-size:.65rem;letter-spacing:.1em;min-height:1em;transition:color .2s;}
-  .pw-status.ok{color:var(--success);}.pw-status.err{color:var(--danger);}
-
 
   .orbit-ring{position:fixed;border-radius:50%;border:1px solid rgba(79,138,255,.08);pointer-events:none;z-index:1;transition:opacity .4s;}
   [data-theme="light"] .orbit-ring{opacity:.25;}
@@ -205,7 +163,6 @@
   .orbit-ring:nth-child(3){width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spinRing 40s linear infinite}
   @keyframes spinRing{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
   .orbit-dot{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--accent);top:-2px;left:50%;margin-left:-2px;box-shadow:0 0 8px var(--accent)}
-
 
   #panicOverlay{display:none;position:fixed;inset:0;z-index:9999;background:#fff;flex-direction:column;}
   #panicOverlay.active{display:flex;}
@@ -226,10 +183,8 @@
   .fake-class-body{padding:12px;font-size:13px;color:#5f6368;}
   .panic-hint{position:fixed;bottom:14px;right:16px;font-size:11px;color:rgba(0,0,0,.25);font-family:Arial,sans-serif;}
 
-
   #soundBtn{position:fixed;bottom:1.1rem;right:1.1rem;z-index:50;width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,opacity .2s;opacity:.55;}
   #soundBtn:hover{border-color:var(--accent);color:var(--text);opacity:1;}
-
 
   #toast{position:fixed;bottom:4rem;left:50%;transform:translateX(-50%) translateY(10px);background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.6rem 1.2rem;font-size:.7rem;letter-spacing:.12em;color:var(--text);opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:100;white-space:nowrap;}
   #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
@@ -247,22 +202,7 @@
 <button id="soundBtn" title="Toggle sound">🔊</button>
 <div id="toast"></div>
 
-<div id="lockScreen">
-  <div class="lock-moon"></div>
-  <div class="lock-title">MOON</div>
-  <div class="lock-sub">ENTER ACCESS CODE</div>
-  <div class="lock-form">
-    <div class="lock-input-wrap">
-      <input type="password" id="lockInput" class="lock-input" placeholder="••••••••" maxlength="32" autocomplete="off" spellcheck="false">
-    </div>
-    <button class="lock-btn" id="lockSubmit">ACCESS</button>
-    <div class="lock-error" id="lockError">&nbsp;</div>
-    <div class="lock-attempts" id="lockAttempts"></div>
-  </div>
-</div>
-
-
-<div id="loader" style="display:none;">
+<div id="loader">
   <div class="loader-orbit">
     <div class="orbit-track"><div class="orbit-sat"></div></div>
     <div class="orbit-track-2"><div class="orbit-sat-2"></div></div>
@@ -292,7 +232,6 @@
   </div>
 </div>
 
-
 <div id="gamesPanel">
   <div class="panel-backdrop" id="panelBackdrop"></div>
   <div class="panel-drawer">
@@ -310,7 +249,6 @@
     <div class="panel-grid" id="gameGrid"></div>
   </div>
 </div>
-
 
 <div id="searchPanel">
   <div class="search-panel-header">
@@ -330,7 +268,6 @@
   </div>
 </div>
 
-
 <div id="settingsPanel">
   <div class="panel-backdrop" id="settingsBackdrop"></div>
   <div class="settings-drawer">
@@ -340,7 +277,6 @@
     </div>
     <div class="settings-body">
 
-    
       <div class="settings-section">
         <div class="settings-label">TAB DISGUISE</div>
         <div class="settings-row">
@@ -348,7 +284,7 @@
           <input type="text" class="s-input" id="sTabTitle" placeholder="Moon" maxlength="40">
         </div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Tab Icon</div><div class="settings-row-sub">Emoji shown as </div></div>
+          <div><div class="settings-row-label">Tab Icon</div><div class="settings-row-sub">Emoji shown as favicon</div></div>
           <input type="text" class="s-input" id="sTabIcon" placeholder="🌙" maxlength="4">
         </div>
         <div class="settings-row">
@@ -385,7 +321,6 @@
         </div>
       </div>
 
-    
       <div class="settings-section">
         <div class="settings-label">SOUND</div>
         <div class="settings-row">
@@ -394,30 +329,10 @@
         </div>
       </div>
 
-  
-      <div class="settings-section">
-        <div class="settings-label">ACCESS PASSWORD</div>
-        <div class="settings-row-label" style="font-size:.72rem;color:var(--muted);line-height:1.5">
-          Changing the password will instantly kick all active sessions.
-          Anyone currently on the site must re-enter the new password.
-        </div>
-        <div class="pw-form">
-          <input type="password" class="s-input" id="sPwCurrent" placeholder="Current password" style="max-width:100%" autocomplete="off">
-          <input type="password" class="s-input" id="sPwNew" placeholder="New password" style="max-width:100%" autocomplete="off">
-          <input type="password" class="s-input" id="sPwConfirm" placeholder="Confirm new password" style="max-width:100%" autocomplete="off">
-          <div style="display:flex;gap:.5rem;">
-            <button class="s-btn" id="changePwBtn" style="flex:1">CHANGE PASSWORD</button>
-            <button class="s-btn danger" id="removePwBtn">REMOVE LOCK</button>
-          </div>
-          <div class="pw-status" id="pwStatus">&nbsp;</div>
-        </div>
-      </div>
-
-
       <div class="settings-section">
         <div class="settings-label">DANGER ZONE</div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Clear All Data</div><div class="settings-row-sub">Resets all settings & password</div></div>
+          <div><div class="settings-row-label">Clear All Data</div><div class="settings-row-sub">Resets all settings & saved data</div></div>
           <button class="s-btn danger" id="clearDataBtn">CLEAR</button>
         </div>
       </div>
@@ -425,7 +340,6 @@
     </div>
   </div>
 </div>
-
 
 <div id="panicOverlay">
   <div class="fake-page">
@@ -456,14 +370,8 @@
 </div>
 
 <script>
-
-let newTab = window.open("about:blank");
-newTab.document.write(document.documentElement.outerHTML);
-newTab.document.close();
-
-
-  
 'use strict';
+
 // ════════════════════════════════════════════════════
 //  SOUND ENGINE
 // ════════════════════════════════════════════════════
@@ -481,7 +389,6 @@ const SFX={
   boot:()=>[220,330,440,550,660,880].forEach((f,i)=>setTimeout(()=>tone(f,'sine',.18,.09),i*170)),
   success:()=>{tone(660,'sine',.1,.1);setTimeout(()=>tone(880,'sine',.15,.09),100);},
   error:()=>[300,250].forEach((f,i)=>setTimeout(()=>tone(f,'square',.12,.1),i*80)),
-  unlock:()=>[440,550,660,880].forEach((f,i)=>setTimeout(()=>tone(f,'sine',.15,.1),i*80)),
 };
 
 // ════════════════════════════════════════════════════
@@ -495,124 +402,12 @@ function showToast(msg,type=''){
   toastTO=setTimeout(()=>el.className='',2200);
 }
 
-
-const PW_KEY     = 'moon_pw_hash';
-const TOKEN_KEY  = 'moon_session_token';
-const TOKEN_GEN  = 'moon_token_gen';   // generation counter
-
-function simpleHash(str){
-  // Djb2 hash — good enough for a fun site lock
-  let h=5381;
-  for(let i=0;i<str.length;i++) h=((h<<5)+h)+str.charCodeAt(i);
-  return (h>>>0).toString(36);
-}
-
-function getStoredHash(){ return localStorage.getItem(PW_KEY); }
-function getStoredGen(){  return localStorage.getItem(TOKEN_GEN)||'0'; }
-function getSessionToken(){ return sessionStorage.getItem(TOKEN_KEY); }
-
-function setPassword(newPw){
-  const hash=simpleHash(newPw);
-  localStorage.setItem(PW_KEY,hash);
-  // Bump generation counter — this invalidates all old session tokens
-  const gen=(parseInt(getStoredGen())||0)+1;
-  localStorage.setItem(TOKEN_GEN,String(gen));
-  // Give current user a fresh token
-  sessionStorage.setItem(TOKEN_KEY,String(gen));
-}
-
-function removePassword(){
-  localStorage.removeItem(PW_KEY);
-  localStorage.removeItem(TOKEN_GEN);
-  sessionStorage.removeItem(TOKEN_KEY);
-}
-
-function isSessionValid(){
-  const storedHash=getStoredHash();
-  if(!storedHash) return true; // No password set
-  const gen=getStoredGen();
-  const token=getSessionToken();
-  return token===gen;
-}
-
-function checkPassword(input){
-  const storedHash=getStoredHash();
-  if(!storedHash) return true;
-  return simpleHash(input)===storedHash;
-}
-
-function grantSession(){
-  const gen=getStoredGen();
-  sessionStorage.setItem(TOKEN_KEY,gen);
-}
-
-
-let lockAttempts=0;
-const MAX_ATTEMPTS=5;
-
-function initLockScreen(){
-  const hasPassword=!!getStoredHash();
-  if(!hasPassword||isSessionValid()){
-    // No password or valid session — skip lock
-    document.getElementById('lockScreen').classList.add('off');
-    startLoader();
-    return;
-  }
-
-  document.getElementById('lockInput').focus();
-}
-
-function tryUnlock(){
-  const val=document.getElementById('lockInput').value;
-  const inp=document.getElementById('lockInput');
-  const errEl=document.getElementById('lockError');
-  const attEl=document.getElementById('lockAttempts');
-
-  if(!val.trim()){
-    errEl.textContent='Enter a password.';
-    inp.classList.add('shake','error');
-    setTimeout(()=>inp.classList.remove('shake'),400);
-    SFX.error();
-    return;
-  }
-
-  if(checkPassword(val)){
-    grantSession();
-    SFX.unlock();
-    document.getElementById('lockScreen').classList.add('off');
-    startLoader();
-  } else {
-    lockAttempts++;
-    inp.value='';
-    inp.classList.add('shake','error');
-    setTimeout(()=>inp.classList.remove('shake','error'),600);
-    SFX.error();
-    const remaining=MAX_ATTEMPTS-lockAttempts;
-    if(remaining<=0){
-      errEl.textContent='Too many attempts. Please try again later.';
-      document.getElementById('lockSubmit').disabled=true;
-      attEl.textContent='';
-      setTimeout(()=>{
-        lockAttempts=0;
-        document.getElementById('lockSubmit').disabled=false;
-        errEl.textContent='';
-        attEl.textContent='';
-      },15000);
-    } else {
-      errEl.textContent='Incorrect password.';
-      attEl.textContent=remaining+' attempt'+(remaining!==1?'s':'')+' remaining';
-    }
-  }
-}
-
-document.getElementById('lockSubmit').addEventListener('click',tryUnlock);
-document.getElementById('lockInput').addEventListener('keydown',e=>{ if(e.key==='Enter') tryUnlock(); });
-
-
+// ════════════════════════════════════════════════════
+//  LOADER
+// ════════════════════════════════════════════════════
 const MSGS=['INITIALIZING...','LOADING ASSETS...','DECRYPTING MODULES...','SYNCING DATA...','ESTABLISHING CONNECTION...','READY'];
 function startLoader(){
   const loaderEl=document.getElementById('loader');
-  loaderEl.style.display='flex';
   let mi=0;
   const statEl=document.getElementById('loaderStatus');
   const titEl=document.getElementById('loaderTitle');
@@ -627,36 +422,28 @@ function startLoader(){
   },2700);
 }
 
+// ════════════════════════════════════════════════════
+//  SETTINGS STORAGE
+// ════════════════════════════════════════════════════
 const SETTINGS_KEY='moon_settings';
-function getSettings(){
-  try{return JSON.parse(localStorage.getItem(SETTINGS_KEY))||{};}catch{return{};}
-}
-function saveSettings(patch){
-  const s={...getSettings(),...patch};
-  localStorage.setItem(SETTINGS_KEY,JSON.stringify(s));
-}
+function getSettings(){try{return JSON.parse(localStorage.getItem(SETTINGS_KEY))||{};}catch{return{};}}
+function saveSettings(patch){const s={...getSettings(),...patch};localStorage.setItem(SETTINGS_KEY,JSON.stringify(s));}
 
 function applyStoredSettings(){
   const s=getSettings();
-  // Theme
   if(s.theme==='light'){
     document.documentElement.setAttribute('data-theme','light');
     document.getElementById('themeBtnLabel').textContent='🌙 DARK MODE';
     document.getElementById('sThemeToggle').checked=true;
     dark=false;
   }
-  // Accent
   if(s.accent) applyAccent(s.accent,false);
-  // Tab title/icon
   if(s.tabTitle) document.title=s.tabTitle;
   if(s.tabIcon)  setFaviconEmoji(s.tabIcon);
-  // Sound
   if(s.sound===false){ soundOn=false; document.getElementById('soundBtn').textContent='🔇'; document.getElementById('sSoundToggle').checked=false; }
-  // Fill in settings panel inputs
   document.getElementById('sTabTitle').value=s.tabTitle||'';
   document.getElementById('sTabIcon').value=s.tabIcon||'';
 }
-
 
 function setFaviconEmoji(emoji){
   const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>${emoji}</text></svg>`;
@@ -667,12 +454,14 @@ function applyTabDisguise(title,icon){
   if(title) document.title=title;
   if(icon)  setFaviconEmoji(icon);
   saveSettings({tabTitle:title||'',tabIcon:icon||''});
-  showToast('TAB UPDATED',  'ok');
+  showToast('TAB UPDATED','ok');
   SFX.success();
 }
 
+document.getElementById('applyTabBtn').addEventListener('click',()=>{
+  applyTabDisguise(document.getElementById('sTabTitle').value, document.getElementById('sTabIcon').value);
+});
 
-// Preset buttons
 document.querySelectorAll('[data-title]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const t=btn.dataset.title, ic=btn.dataset.icon;
@@ -703,11 +492,8 @@ document.getElementById('sThemeToggle').addEventListener('change',e=>setTheme(!e
 // ════════════════════════════════════════════════════
 function applyAccent(color,save=true){
   document.documentElement.style.setProperty('--accent',color);
-  // Derive glow
   document.documentElement.style.setProperty('--glow',color+'55');
-  document.querySelectorAll('.c-swatch').forEach(s=>{
-    s.classList.toggle('active',s.dataset.color===color);
-  });
+  document.querySelectorAll('.c-swatch').forEach(s=>s.classList.toggle('active',s.dataset.color===color));
   if(save) saveSettings({accent:color});
 }
 document.getElementById('accentPicker').addEventListener('click',e=>{
@@ -716,7 +502,7 @@ document.getElementById('accentPicker').addEventListener('click',e=>{
 });
 
 // ════════════════════════════════════════════════════
-//  SOUND TOGGLE
+//  SOUND
 // ════════════════════════════════════════════════════
 function setSoundOn(val){
   soundOn=val;
@@ -728,71 +514,21 @@ document.getElementById('soundBtn').addEventListener('click',()=>{ setSoundOn(!s
 document.getElementById('sSoundToggle').addEventListener('change',e=>{ setSoundOn(e.target.checked); if(soundOn) SFX.click(); });
 
 // ════════════════════════════════════════════════════
-//  PASSWORD SETTINGS
+//  SETTINGS PANEL
 // ════════════════════════════════════════════════════
-function setPwStatus(msg,type){
-  const el=document.getElementById('pwStatus');
-  el.textContent=msg; el.className='pw-status '+(type||'');
-}
+function openSettings(){ document.getElementById('settingsPanel').classList.add('open'); SFX.open(); }
+function closeSettings(){ document.getElementById('settingsPanel').classList.remove('open'); SFX.close(); }
+document.getElementById('settingsBtn').addEventListener('click',openSettings);
+document.getElementById('closeSettings').addEventListener('click',closeSettings);
+document.getElementById('settingsBackdrop').addEventListener('click',closeSettings);
 
-document.getElementById('changePwBtn').addEventListener('click',()=>{
-  const cur=document.getElementById('sPwCurrent').value;
-  const nw=document.getElementById('sPwNew').value;
-  const cf=document.getElementById('sPwConfirm').value;
-
-  // If there's an existing password, verify it first
-  const storedHash=getStoredHash();
-  if(storedHash&&!checkPassword(cur)){
-    setPwStatus('Current password is incorrect.','err'); SFX.error(); return;
-  }
-  if(!nw){ setPwStatus('New password cannot be empty.','err'); SFX.error(); return; }
-  if(nw!==cf){ setPwStatus('Passwords do not match.','err'); SFX.error(); return; }
-  if(nw.length<4){ setPwStatus('Password must be at least 4 characters.','err'); SFX.error(); return; }
-
-  setPassword(nw);
-  document.getElementById('sPwCurrent').value='';
-  document.getElementById('sPwNew').value='';
-  document.getElementById('sPwConfirm').value='';
-  setPwStatus('Password updated! Active sessions kicked.','ok');
-  SFX.success();
-  showToast('PASSWORD CHANGED — SESSIONS KICKED','ok');
-});
-
-document.getElementById('removePwBtn').addEventListener('click',()=>{
-  const cur=document.getElementById('sPwCurrent').value;
-  const storedHash=getStoredHash();
-  if(storedHash&&!checkPassword(cur)){
-    setPwStatus('Enter current password to remove lock.','err'); SFX.error(); return;
-  }
-  removePassword();
-  setPwStatus('Password removed. Site is now open.','ok');
-  SFX.success();
-  showToast('LOCK REMOVED','ok');
-});
-
-// Clear all data
 document.getElementById('clearDataBtn').addEventListener('click',()=>{
-  if(!confirm('Clear all Moon data? This removes your password, settings, and all saved data.')) return;
+  if(!confirm('Clear all Moon data? This removes your settings and all saved data.')) return;
   localStorage.clear(); sessionStorage.clear();
   showToast('ALL DATA CLEARED','ok');
   SFX.error();
   setTimeout(()=>location.reload(),1000);
 });
-
-// ════════════════════════════════════════════════════
-//  SETTINGS PANEL OPEN/CLOSE
-// ════════════════════════════════════════════════════
-function openSettings(){
-  document.getElementById('settingsPanel').classList.add('open');
-  SFX.open();
-}
-function closeSettings(){
-  document.getElementById('settingsPanel').classList.remove('open');
-  SFX.close();
-}
-document.getElementById('settingsBtn').addEventListener('click',openSettings);
-document.getElementById('closeSettings').addEventListener('click',closeSettings);
-document.getElementById('settingsBackdrop').addEventListener('click',closeSettings);
 
 
 let allGames=[];
@@ -805,10 +541,7 @@ function openPanel(){
   document.getElementById('searchInput').focus();
   SFX.open();
 }
-function closePanel(){
-  document.getElementById('gamesPanel').classList.remove('open');
-  SFX.close();
-}
+function closePanel(){ document.getElementById('gamesPanel').classList.remove('open'); SFX.close(); }
 document.getElementById('openGamesBtn').addEventListener('click',openPanel);
 document.getElementById('closePanel').addEventListener('click',closePanel);
 document.getElementById('panelBackdrop').addEventListener('click',closePanel);
@@ -825,12 +558,7 @@ function renderGames(games){
     card.style.animationDelay=(i*0.05)+'s';
     card.addEventListener('mouseenter',()=>SFX.hover());
     card.onclick=()=>{SFX.click();location.href=game.page;};
-    card.innerHTML=
-      '<div class="img-wrap">'+
-        '<img src="'+game.thumb+'" alt="'+game.title+'" loading="lazy">'+
-        '<div class="play-overlay"><div class="play-btn-icon">▶</div></div>'+
-      '</div>'+
-      '<div class="game-card-label"><h3>'+game.title+'</h3></div>';
+    card.innerHTML='<div class="img-wrap"><img src="'+game.thumb+'" alt="'+game.title+'" loading="lazy"><div class="play-overlay"><div class="play-btn-icon">▶</div></div></div><div class="game-card-label"><h3>'+game.title+'</h3></div>';
     grid.appendChild(card);
   });
 }
@@ -838,7 +566,6 @@ document.getElementById('searchInput').addEventListener('input',e=>{
   const q=e.target.value.toLowerCase().trim();
   renderGames(q?allGames.filter(g=>g.title.toLowerCase().includes(q)):allGames);
 });
-
 
 function openSearchPanel(query){
   document.getElementById('searchPanel').classList.add('open');
@@ -864,7 +591,6 @@ document.getElementById('menuSearchInput').addEventListener('keydown',e=>{if(e.k
 document.getElementById('drawerSearchGo').addEventListener('click',()=>doSearch(document.getElementById('drawerSearchInput').value));
 document.getElementById('drawerSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch(e.target.value);});
 
-
 function cloakTab(){
   const tab=window.open('about:blank','_blank');
   if(!tab){alert('Pop-up blocked! Please allow pop-ups.');return;}
@@ -880,7 +606,6 @@ function triggerPanic(){panicOn=true;document.getElementById('panicOverlay').cla
 function exitPanic(){panicOn=false;document.getElementById('panicOverlay').classList.remove('active');document.title=document.getElementById('sTabTitle').value||'Moon';}
 document.getElementById('panicBtn').addEventListener('click',()=>{SFX.panic();triggerPanic();});
 
-// Escape handling
 let escCount=0,escTO=null;
 document.addEventListener('keydown',e=>{
   if(e.key!=='Escape')return;
@@ -890,17 +615,12 @@ document.addEventListener('keydown',e=>{
   escTO=setTimeout(()=>{escCount=0;closePanel();closeSearchPanel();closeSettings();},340);
 });
 
-// Hover sounds on menu buttons
 document.querySelectorAll('.menu-btn').forEach(b=>b.addEventListener('mouseenter',()=>SFX.hover()));
 
-
-initLockScreen();
+// ════════════════════════════════════════════════════
+//  BOOT
+// ════════════════════════════════════════════════════
+startLoader();
 </script>
 </body>
 </html>
-
-
-
-
-
-
