@@ -10,24 +10,19 @@
     "thumb": "thumb3.png"
   },
   {
-    "title": "StormDrop.io",
-    "page": "spanish.html",
-    "thumb": "thumb6.jpg"
-  },
-  {
     "title": "Jacksmith",
     "page": "fractions.html",
     "thumb": "thumb7.jpg"
   },
   {
-    "title": "Web Search",
-    "page": "frenchstudy.html",
-    "thumb": ""
-  },
-  {
     "title": "BIT FOOTBALL",
     "page": "englishstudy.html",
     "thumb": "thumb9.png"
+  },
+  {
+    "title": "GM-MATH",
+    "page": "downloaded.html",
+    "thumb": ""
   }
 ]
 
